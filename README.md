@@ -11,6 +11,17 @@ To create a two screens , first screen will take one number input from user. Aft
 Latest Version Android Studio
 
 ## ALGORITHM:
+Step 1: Create a New Project in Android Studio
+
+Step 2: Working with the activity_main.xml File
+
+Step 3: Working with the MainActivity File
+
+Step 4: Working with the activity_main2.xml File
+
+Step 5: Working with the resultctivity File
+
+Step 6: Working with the manifest File
 
 
 
@@ -68,7 +79,119 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 ```
+# In activity_main.xml
+```xml
+<!-- res/layout/activity_main.xml -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <EditText
+        android:id="@+id/numberEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Enter a number"
+        android:inputType="number"/>
+
+    <Button
+        android:id="@+id/factorialButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calculate Factorial"/>
+
+</LinearLayout>
 ```
+# in resultactivity.java
+```
+package com.example.explicitintent;
+
+// ResultActivity.java
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class ResultActivity extends AppCompatActivity {
+    private TextView resultTextView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_result);
+
+        resultTextView = findViewById(R.id.resultTextView);
+
+        Intent intent = getIntent();
+        int factorial = intent.getIntExtra("factorial", 0);
+
+        resultTextView.setText("Factorial: " + factorial);
+    }
+}
+```
+# In activity_result.xml
+```xml
+package com.example.explicitintent;
+
+// ResultActivity.java
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class ResultActivity extends AppCompatActivity {
+    private TextView resultTextView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_result);
+
+        resultTextView = findViewById(R.id.resultTextView);
+
+        Intent intent = getIntent();
+        int factorial = intent.getIntExtra("factorial", 0);
+
+        resultTextView.setText("Factorial: " + factorial);
+    }
+}
+```
+# in Androidmanifest.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.explicitintent">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Explicitintent"
+        tools:targetApi="31">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- Declaration for SecondActivity -->
+        <activity android:name=".ResultActivity" />
+    </application>
+
+</manifest>
+```
+
 
 
 ## OUTPUT
