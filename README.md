@@ -134,31 +134,23 @@ public class ResultActivity extends AppCompatActivity {
 ```
 # In activity_result.xml
 ```xml
-package com.example.explicitintent;
+<!-- res/layout/activity_result.xml -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
 
-// ResultActivity.java
-import android.content.Intent;
-import android.os.Bundle;
-import android.widget.TextView;
+    <TextView
+        android:id="@+id/resultTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"/>
 
-import androidx.appcompat.app.AppCompatActivity;
+</LinearLayout>
 
-public class ResultActivity extends AppCompatActivity {
-    private TextView resultTextView;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_result);
-
-        resultTextView = findViewById(R.id.resultTextView);
-
-        Intent intent = getIntent();
-        int factorial = intent.getIntExtra("factorial", 0);
-
-        resultTextView.setText("Factorial: " + factorial);
-    }
-}
 ```
 # in Androidmanifest.xml
 ```xml
